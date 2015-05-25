@@ -1,0 +1,37 @@
+{
+  "name": "papilio-util",
+  "version": "1.0.0",
+  "description": "Better for human write schema define",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {
+    "jison": "^0.4.15",
+    "object-assign": "^2.0.0",
+    "recast": "^0.10.12"
+  },
+  "devDependencies": {
+    "jison": "^0.4.15",
+    "mocha": "^2.2.5",
+    "should": "^6.0.3"
+  },
+  "scripts": {
+    "test": "mocha test",
+    "parse": "jison parse/schema.yy parse/schema.l -o parse/schema.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/shepherdwind/papilio-schema.git"
+  },
+  "keywords": [
+    "schema",
+    "json-schema"
+  ],
+  "author": "shepherdwind",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/shepherdwind/papilio-schema/issues"
+  },
+  "homepage": "https://github.com/shepherdwind/papilio-schema#readme"
+}
