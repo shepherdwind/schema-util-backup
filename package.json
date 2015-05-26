@@ -7,7 +7,6 @@
     "test": "test"
   },
   "dependencies": {
-    "jison": "^0.4.15",
     "object-assign": "^2.0.0",
     "recast": "^0.10.12"
   },

@@ -1,5 +1,7 @@
 ## schema util
 
+[![Build Status](https://travis-ci.org/shepherdwind/schema-util.svg?branch=master)](https://travis-ci.org/shepherdwind/schema-util)
+
 ### schema dsl parse
 
 ```js
