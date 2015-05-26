@@ -1,5 +1,5 @@
 {
-  "name": "papilio-util",
+  "name": "schema-util",
   "version": "1.0.0",
   "description": "Better for human write schema define",
   "main": "index.js",
@@ -12,13 +12,15 @@
     "recast": "^0.10.12"
   },
   "devDependencies": {
+    "istanbul": "^0.3.14",
     "jison": "^0.4.15",
     "mocha": "^2.2.5",
     "should": "^6.0.3"
   },
   "scripts": {
     "test": "mocha test",
-    "parse": "jison parse/schema.yy parse/schema.l -o parse/schema.js"
+    "parse": "jison parse/schema.yy parse/schema.l -o parse/schema.js",
+    "cov": "istanbul cover node_modules/.bin/_mocha test"
   },
   "repository": {
     "type": "git",
