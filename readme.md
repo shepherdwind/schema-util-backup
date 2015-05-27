@@ -1,6 +1,7 @@
 ## schema util
 
 [![Build Status](https://travis-ci.org/shepherdwind/schema-util.svg?branch=master)](https://travis-ci.org/shepherdwind/schema-util)
+[![NPM](https://nodei.co/npm/schema-util.png?compact=true)](https://nodei.co/npm/schema-util/)
 
 ### schema dsl parse
 
@@ -8,10 +9,10 @@
 var schema = require('schema-util').schema;
 
 var json = schema(`
-  array(foo) {
+  Array(foo) {
     href(href),
     title(title),
-    img.image(image url),
+    img(image url): Image,
     amount(money amout)
   }
 `);
@@ -34,30 +35,30 @@ And nest rule supported:
 
 ```
 var json = schema(`
-  object(abc) {
+  Object(abc) {
     title(title),
-    user.object(user) {
+    user(user): Object {
       name(user name),
-      age.number(user age)
+      age(user age): Number
     }
   }
-`, ['number']);
+`, ['Number']);
 ```
 
 The secend argument, you can add some more type support, such as
 `age.number`, `background.color`.
 
 ```
-schema(`array(foo) { a(a)}`, types)
+schema(`Array(foo) { a(a)}`, types)
 ```
 
 The defaultType is 'string', If you want change this, you need send
 the secend argument like this:
 
 ```
-schema(`array(foo) { a(a)}`, {
-  defaultType: 'number',
-  supported: ['string']
+schema(`Array(foo) { a(a)}`, {
+  defaultType: 'Number',
+  supported: ['String']
 });
 ```
 
