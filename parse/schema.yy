@@ -4,7 +4,9 @@
 
 expressions
   : schema EOF
-      { return $1; }
+    { return $1; }
+  | exports EOF
+    { return $1; }
   ;
 
 schema
@@ -14,6 +16,18 @@ schema
     { $$ = $1; }
   ;
 
+exports
+  : export
+    { $$ = [$1] }
+  | exports export
+    { $$ = [].concat($1, $2) }
+  ;
+
+export
+  : EXPORT VAR START schema END
+    { $$ = { key: $2, schema: $4 }}
+  ;
+
 array
   : ARRAY STRING START props END
     { $$ = { type: 'array', description: $2, props: $4 } }
@@ -21,7 +35,7 @@ array
 
 object
   : OBJECT STRING START props END
-    { $$ = { type: 'array', description: $2, props: $4 } }
+    { $$ = { type: 'object', description: $2, props: $4 } }
   ;
 
 props
@@ -32,12 +46,14 @@ props
   ;
 
 prop
-  : var STRING
-    { $$ = { path: $1, description: $2}}
-  | var DOT OBJECT STRING START props END
-    { $$ = { path: $1, description: $4, props: $6, type: 'object' }}
-  | var DOT ARRAY STRING START props END
-    { $$ = { path: $1, description: $4, props: $6, type: 'array' }}
+  : VAR STRING
+    { $$ = { key: $1, description: $2}}
+  | VAR STRING COLON var
+    { $$ = { key: $1, description: $2, path: $4 }}
+  | VAR STRING COLON OBJECT START props END
+    { $$ = { key: $1, description: $2, props: $6, type: 'object' }}
+  | VAR STRING COLON ARRAY START props END
+    { $$ = { key: $1, description: $2, props: $6, type: 'array' }}
   ;
 
 var

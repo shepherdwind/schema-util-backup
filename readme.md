@@ -60,3 +60,37 @@ schema(`array(foo) { a(a)}`, {
   supported: ['string']
 });
 ```
+
+#### export support
+
+Write code like this example, you can get a object, which have to
+properties a and b. Each property have the value of schema object.
+
+```
+schema(`
+  export a {
+    Object(hello) { ... }
+  }
+
+  export b {
+    Array(hello b) { ... }
+  }
+`);
+```
+
+### mock
+
+mock schema data
+
+```
+mock(schema, config)
+```
+
+config can set default type value, for example, config set to { image: 'xx.png' },
+then schema mock image type value will be xx.png.
+
+config value can be an function.
+
+### walk
+
+walk every property of schema.

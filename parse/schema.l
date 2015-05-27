@@ -1,9 +1,11 @@
 %%
 
-"array"             { return 'ARRAY' }
-"object"            { return 'OBJECT' }
+"Array"             { return 'ARRAY' }
+"Object"            { return 'OBJECT' }
+"export"            { return 'EXPORT' }
 "{"                 { return 'START' }
 ","                 { return 'COMMA' }
+":"                 { return 'COLON' }
 "}"                 { return 'END' }
 [\$\w]+             { return 'VAR' }
 "."/[\$\w]          { return 'DOT' }

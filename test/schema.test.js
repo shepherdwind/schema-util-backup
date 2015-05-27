@@ -5,10 +5,10 @@ var schema = require('../index').schema;
 describe('schema.test.js', function() {
   it('simple', function() {
     var json = schema(`
-      array(知名品牌店铺) {
+      Array(知名品牌店铺) {
         href(店铺连接),
         title(标题),
-        img.image(图片地址),
+        img(图片地址): Image,
         amount(优惠金额)
       }
     `);
@@ -25,13 +25,13 @@ describe('schema.test.js', function() {
   });
 
   it('add other types support', function() {
-    var types = ['number', 'image'];
+    var types = ['Number', 'Image'];
     var json = schema(`
-      array(知名品牌店铺) {
+      Array(知名品牌店铺) {
         href(店铺连接),
         title(标题),
-        img.image(图片地址),
-        amount.number(优惠金额)
+        img(图片地址): Image,
+        amount(优惠金额): Number
       }
     `, types);
 
@@ -47,14 +47,14 @@ describe('schema.test.js', function() {
 
   it('nest rules', function() {
     var json = schema(`
-      object(abc) {
+      Object(abc) {
         title(title),
-        user.object(user) {
+        user(user): Object {
           name(user name),
-          age.number(user age)
+          age(user age): Number
         }
       }
-    `, ['number']);
+    `, ['Number']);
     var props = {
       title: { description: 'title', type: 'string' },
       user: {
@@ -67,5 +67,35 @@ describe('schema.test.js', function() {
       }
     };
     json.properties.should.eql(props);
+  });
+
+  it('export support', function() {
+    var json = schema(`
+      export a {
+        Object(hello) {
+          url(href)
+        }
+      }
+
+      export b {
+        Array(hello b) {
+          url(href),
+          c(d)
+        }
+      }
+    `);
+
+    json.a.type.should.equal('object');
+    json.b.type.should.equal('array');
+    json.b.properties.should.eql({
+      url: {
+        description: 'href',
+        type: 'string'
+      },
+      c: {
+        description: 'd',
+        type: 'string'
+      }
+    });
   });
 });
