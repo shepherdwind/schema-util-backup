@@ -1,6 +1,7 @@
 ## schema util
 
 [![Build Status](https://travis-ci.org/shepherdwind/schema-util.svg?branch=master)](https://travis-ci.org/shepherdwind/schema-util)
+
 [![NPM](https://nodei.co/npm/schema-util.png?compact=true)](https://nodei.co/npm/schema-util/)
 
 ### schema dsl parse

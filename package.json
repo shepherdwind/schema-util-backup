@@ -1,6 +1,6 @@
 {
   "name": "schema-util",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Better for human write schema define",
   "main": "index.js",
   "directories": {
@@ -23,7 +23,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/shepherdwind/papilio-schema.git"
+    "url": "git+ssh://git@github.com/shepherdwind/schema-util.git"
   },
   "keywords": [
     "schema",
@@ -32,7 +32,7 @@
   "author": "shepherdwind",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/shepherdwind/papilio-schema/issues"
+    "url": "https://github.com/shepherdwind/schema-util/issues"
   },
-  "homepage": "https://github.com/shepherdwind/papilio-schema#readme"
+  "homepage": "https://github.com/shepherdwind/schema-util#readme"
 }
