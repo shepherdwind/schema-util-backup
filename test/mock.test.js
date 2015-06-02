@@ -55,6 +55,7 @@ describe('mock.test.js', function() {
       number: 10
     });
     data[0].img.should.eql(img);
+    data[0].user.age.should.eql(10);
   });
 
   it('array size support', function() {

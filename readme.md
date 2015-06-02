@@ -43,7 +43,7 @@ var json = schema(`
       age(user age): Number
     }
   }
-`, ['Number']);
+`, ['number']);
 ```
 
 The secend argument, you can add some more type support, such as
@@ -58,8 +58,8 @@ the secend argument like this:
 
 ```
 schema(`Array(foo) { a(a)}`, {
-  defaultType: 'Number',
-  supported: ['String']
+  defaultType: 'number',
+  supported: ['string']
 });
 ```
 
