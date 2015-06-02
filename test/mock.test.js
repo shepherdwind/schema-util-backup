@@ -12,10 +12,10 @@ describe('mock.test.js', function() {
       amount(优惠金额),
       user(用户): Object {
         name(名字),
-        age(年龄)
+        age(年龄): Number
       }
     }
-  `);
+  `, ['number']);
   it('simple', function() {
     var data = mock(json);
     data.length.should.equal(2);
@@ -42,6 +42,17 @@ describe('mock.test.js', function() {
       image: function() {
         return img;
       }
+    });
+    data[0].img.should.eql(img);
+  });
+
+  it('method support with number', function() {
+    var img = 'http://image/mock.jpg';
+    var data = mock(json, {
+      image: function() {
+        return img;
+      },
+      number: 10
     });
     data[0].img.should.eql(img);
   });
