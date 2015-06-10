@@ -1,6 +1,6 @@
 {
   "name": "schema-util",
-  "version": "1.2.3",
+  "version": "1.2.4",
   "description": "Better for human write schema define",
   "main": "index.js",
   "directories": {

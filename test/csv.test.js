@@ -4,7 +4,7 @@ var schema = require('../index').schema;
 var toCsv = require('../index').csv;
 var read = toCsv.read;
 
-describe('walk.test.js', function() {
+describe('csv.test.js', function() {
   var json = schema(`
     Array(知名品牌店铺) {
       href(店铺连接),
@@ -50,6 +50,44 @@ describe('walk.test.js', function() {
       ['优惠金额', '标题', '图片地址', '店铺连接'],
       ['a', 'b', 2, 3],
       ['b', 'c', 1, '23']
+    ];
+
+    read(json, csv)
+    .should
+    .eql([{
+      amount: 'a', title: 'b', img: 2, href: 3
+    }, {
+      amount: 'b', title: 'c', img: 1, href: '23'
+    }]);
+  });
+
+  it('row not match', function() {
+    var csv = [
+      ['1惠金额', '题', '图片地址', '店铺连接'],
+      ['a', 'b', 2, 3],
+      ['b', 'c', 1, '23']
+    ];
+
+    (function() {
+      read(json, csv);
+    }).should.throw(/not match/);
+  });
+
+  it('match partly', function() {
+    var csv = [
+      ['图片地址', '店铺连接'],
+      [2, 3],
+      [1, '23']
+    ];
+
+    read(json, csv).length.should.equal(2);
+  });
+
+  it('read much more ', function() {
+    var csv = [
+      ['优惠金额', '标题', '图片地址', '店铺连接', 'useless'],
+      ['a', 'b', 2, 3, 1],
+      ['b', 'c', 1, '23', 2]
     ];
 
     read(json, csv)
