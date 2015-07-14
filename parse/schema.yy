@@ -24,8 +24,8 @@ exports
   ;
 
 export
-  : EXPORT VAR START schema END
-    { $$ = { key: $2, schema: $4 }}
+  : EXPORT VAR schema
+    { $$ = { key: $2, schema: $3 }}
   ;
 
 array

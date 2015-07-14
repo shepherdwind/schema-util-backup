@@ -71,17 +71,13 @@ describe('schema.test.js', function() {
 
   it('export support', function() {
     var json = schema(`
-      export a {
-        Object(hello) {
-          url(href)
-        }
+      export a Object(hello) {
+        url(href)
       }
 
-      export b {
-        Array(hello b) {
-          url(href),
-          c(d)
-        }
+      export b Array(hello b) {
+        url(href),
+        c(d)
       }
     `);
 

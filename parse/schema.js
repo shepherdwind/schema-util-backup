@@ -72,12 +72,12 @@
   }
 */
 var parser = (function(){
-var o=function(k,v,o,l){for(o=o||{},l=k.length;l--;o[k[l]]=v);return o},$V0=[1,9],$V1=[1,7],$V2=[1,8],$V3=[5,13],$V4=[5,10],$V5=[1,21],$V6=[1,25],$V7=[13,19],$V8=[13,19,22];
+var o=function(k,v,o,l){for(o=o||{},l=k.length;l--;o[k[l]]=v);return o},$V0=[1,9],$V1=[1,7],$V2=[1,8],$V3=[5,10],$V4=[1,21],$V5=[1,24],$V6=[16,19],$V7=[16,19,22];
 var parser = {trace: function trace() { },
 yy: {},
-symbols_: {"error":2,"expressions":3,"schema":4,"EOF":5,"exports":6,"array":7,"object":8,"export":9,"EXPORT":10,"VAR":11,"START":12,"END":13,"ARRAY":14,"STRING":15,"props":16,"OBJECT":17,"prop":18,"COMMA":19,"COLON":20,"var":21,"DOT":22,"$accept":0,"$end":1},
-terminals_: {2:"error",5:"EOF",10:"EXPORT",11:"VAR",12:"START",13:"END",14:"ARRAY",15:"STRING",17:"OBJECT",19:"COMMA",20:"COLON",22:"DOT"},
-productions_: [0,[3,2],[3,2],[4,1],[4,1],[6,1],[6,2],[9,5],[7,5],[8,5],[16,1],[16,3],[18,2],[18,4],[18,7],[18,7],[21,1],[21,3]],
+symbols_: {"error":2,"expressions":3,"schema":4,"EOF":5,"exports":6,"array":7,"object":8,"export":9,"EXPORT":10,"VAR":11,"ARRAY":12,"STRING":13,"START":14,"props":15,"END":16,"OBJECT":17,"prop":18,"COMMA":19,"COLON":20,"var":21,"DOT":22,"$accept":0,"$end":1},
+terminals_: {2:"error",5:"EOF",10:"EXPORT",11:"VAR",12:"ARRAY",13:"STRING",14:"START",16:"END",17:"OBJECT",19:"COMMA",20:"COLON",22:"DOT"},
+productions_: [0,[3,2],[3,2],[4,1],[4,1],[6,1],[6,2],[9,3],[7,5],[8,5],[15,1],[15,3],[18,2],[18,4],[18,7],[18,7],[21,1],[21,3]],
 performAction: function anonymous(yytext, yyleng, yylineno, yy, yystate /* action[1] */, $$ /* vstack */, _$ /* lstack */) {
 /* this == yyval */
 
@@ -96,7 +96,7 @@ case 6:
  this.$ = [].concat($$[$0-1], $$[$0]) 
 break;
 case 7:
- this.$ = { key: $$[$0-3], schema: $$[$0-1] }
+ this.$ = { key: $$[$0-1], schema: $$[$0] }
 break;
 case 8:
  this.$ = { type: 'array', description: $$[$0-3], props: $$[$0-1] } 
@@ -121,7 +121,7 @@ case 15:
 break;
 }
 },
-table: [{3:1,4:2,6:3,7:4,8:5,9:6,10:$V0,14:$V1,17:$V2},{1:[3]},{5:[1,10]},{5:[1,11],9:12,10:$V0},o($V3,[2,3]),o($V3,[2,4]),o($V4,[2,5]),{15:[1,13]},{15:[1,14]},{11:[1,15]},{1:[2,1]},{1:[2,2]},o($V4,[2,6]),{12:[1,16]},{12:[1,17]},{12:[1,18]},{11:$V5,16:19,18:20},{11:$V5,16:22,18:20},{4:23,7:4,8:5,14:$V1,17:$V2},{13:[1,24],19:$V6},o($V7,[2,10]),{15:[1,26]},{13:[1,27],19:$V6},{13:[1,28]},o($V3,[2,8]),{11:$V5,18:29},o($V7,[2,12],{20:[1,30]}),o($V3,[2,9]),o($V4,[2,7]),o($V7,[2,11]),{11:[1,34],14:[1,33],17:[1,32],21:31},o($V7,[2,13],{22:[1,35]}),{12:[1,36]},{12:[1,37]},o($V8,[2,16]),{11:[1,38]},{11:$V5,16:39,18:20},{11:$V5,16:40,18:20},o($V8,[2,17]),{13:[1,41],19:$V6},{13:[1,42],19:$V6},o($V7,[2,14]),o($V7,[2,15])],
+table: [{3:1,4:2,6:3,7:4,8:5,9:6,10:$V0,12:$V1,17:$V2},{1:[3]},{5:[1,10]},{5:[1,11],9:12,10:$V0},o($V3,[2,3]),o($V3,[2,4]),o($V3,[2,5]),{13:[1,13]},{13:[1,14]},{11:[1,15]},{1:[2,1]},{1:[2,2]},o($V3,[2,6]),{14:[1,16]},{14:[1,17]},{4:18,7:4,8:5,12:$V1,17:$V2},{11:$V4,15:19,18:20},{11:$V4,15:22,18:20},o($V3,[2,7]),{16:[1,23],19:$V5},o($V6,[2,10]),{13:[1,25]},{16:[1,26],19:$V5},o($V3,[2,8]),{11:$V4,18:27},o($V6,[2,12],{20:[1,28]}),o($V3,[2,9]),o($V6,[2,11]),{11:[1,32],12:[1,31],17:[1,30],21:29},o($V6,[2,13],{22:[1,33]}),{14:[1,34]},{14:[1,35]},o($V7,[2,16]),{11:[1,36]},{11:$V4,15:37,18:20},{11:$V4,15:38,18:20},o($V7,[2,17]),{16:[1,39],19:$V5},{16:[1,40],19:$V5},o($V6,[2,14]),o($V6,[2,15])],
 defaultActions: {10:[2,1],11:[2,2]},
 parseError: function parseError(str, hash) {
     if (hash.recoverable) {
@@ -595,25 +595,25 @@ options: {},
 performAction: function anonymous(yy,yy_,$avoiding_name_collisions,YY_START) {
 var YYSTATE=YY_START;
 switch($avoiding_name_collisions) {
-case 0: return 14 
+case 0: return 12 
 break;
 case 1: return 17 
 break;
 case 2: return 10 
 break;
-case 3: return 12 
+case 3: return 14 
 break;
 case 4: return 19 
 break;
 case 5: return 20 
 break;
-case 6: return 13 
+case 6: return 16 
 break;
 case 7: return 11 
 break;
 case 8: return 22 
 break;
-case 9: yy_.yytext = yy_.yytext.substr(1, yy_.yyleng-2); return 15; 
+case 9: yy_.yytext = yy_.yytext.substr(1, yy_.yyleng-2); return 13; 
 break;
 case 10: /*ignore whitespace*/ 
 break;
