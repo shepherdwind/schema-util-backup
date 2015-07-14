@@ -70,13 +70,9 @@ properties a and b. Each property have the value of schema object.
 
 ```
 schema(`
-  export a {
-    Object(hello) { ... }
-  }
+  export a Object(hello) { ... }
 
-  export b {
-    Array(hello b) { ... }
-  }
+  export b Array(hello b) { ... }
 `);
 ```
 
