@@ -28,6 +28,20 @@ describe('csv.test.js', function() {
     ]);
   });
 
+  it('csv no math', function() {
+    toCsv(json, [{
+      href1: 'a', img: 2, amount: 3, a: 1, b: 2
+    }, {
+      href1: 'b', img: 1, amount: '23'
+    }])
+    .should
+    .eql([
+      ['店铺连接', '标题', '图片地址', '优惠金额'],
+      ['', '', 2, 3],
+      ['', '', 1, '23']
+    ]);
+  });
+
   it('read', function() {
 
     var csv = [
@@ -68,9 +82,11 @@ describe('csv.test.js', function() {
       ['b', 'c', 1, '23']
     ];
 
-    (function() {
-      read(json, csv);
-    }).should.throw(/not match/);
+    read(json, csv).should.eql([{
+      amount: '', title: '', img: 2, href: 3
+    }, {
+      amount: '', title: '', img: 1, href: '23'
+    }]);
   });
 
   it('match partly', function() {
