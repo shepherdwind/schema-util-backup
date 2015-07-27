@@ -31,11 +31,15 @@ export
 array
   : ARRAY STRING START props END
     { $$ = { type: 'array', description: $2, props: $4 } }
+  | PUBLIC ARRAY STRING START props END
+    { $$ = { public: true, type: 'array', description: $3, props: $5 } }
   ;
 
 object
   : OBJECT STRING START props END
     { $$ = { type: 'object', description: $2, props: $4 } }
+  | PUBLIC OBJECT STRING START props END
+    { $$ = { public: true, type: 'object', description: $3, props: $5 } }
   ;
 
 props

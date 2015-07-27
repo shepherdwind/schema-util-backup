@@ -94,4 +94,30 @@ describe('schema.test.js', function() {
       }
     });
   });
+
+  it('public key word support', function() {
+    var json = schema(`
+      public Array(hello b) {
+        url(href),
+        c(d)
+      }
+    `);
+    json.public.should.equal(true);
+
+    json = schema(`
+      public Object(hello b) {
+        url(href),
+        c(d)
+      }
+    `);
+    json.public.should.equal(true);
+
+    json = schema(`
+      Object(hello b) {
+        url(href),
+        c(d)
+      }
+    `);
+    (json.public === undefined).should.equal(true);
+  });
 });

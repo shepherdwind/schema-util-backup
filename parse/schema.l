@@ -2,6 +2,7 @@
 
 "Array"             { return 'ARRAY' }
 "Object"            { return 'OBJECT' }
+"public"            { return 'PUBLIC' }
 "export"            { return 'EXPORT' }
 "{"                 { return 'START' }
 ","                 { return 'COMMA' }

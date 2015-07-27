@@ -72,12 +72,12 @@
   }
 */
 var parser = (function(){
-var o=function(k,v,o,l){for(o=o||{},l=k.length;l--;o[k[l]]=v);return o},$V0=[1,9],$V1=[1,7],$V2=[1,8],$V3=[5,10],$V4=[1,21],$V5=[1,24],$V6=[16,19],$V7=[16,19,22];
+var o=function(k,v,o,l){for(o=o||{},l=k.length;l--;o[k[l]]=v);return o},$V0=[1,10],$V1=[1,7],$V2=[1,8],$V3=[1,9],$V4=[5,10],$V5=[1,26],$V6=[1,31],$V7=[16,20],$V8=[16,20,23];
 var parser = {trace: function trace() { },
 yy: {},
-symbols_: {"error":2,"expressions":3,"schema":4,"EOF":5,"exports":6,"array":7,"object":8,"export":9,"EXPORT":10,"VAR":11,"ARRAY":12,"STRING":13,"START":14,"props":15,"END":16,"OBJECT":17,"prop":18,"COMMA":19,"COLON":20,"var":21,"DOT":22,"$accept":0,"$end":1},
-terminals_: {2:"error",5:"EOF",10:"EXPORT",11:"VAR",12:"ARRAY",13:"STRING",14:"START",16:"END",17:"OBJECT",19:"COMMA",20:"COLON",22:"DOT"},
-productions_: [0,[3,2],[3,2],[4,1],[4,1],[6,1],[6,2],[9,3],[7,5],[8,5],[15,1],[15,3],[18,2],[18,4],[18,7],[18,7],[21,1],[21,3]],
+symbols_: {"error":2,"expressions":3,"schema":4,"EOF":5,"exports":6,"array":7,"object":8,"export":9,"EXPORT":10,"VAR":11,"ARRAY":12,"STRING":13,"START":14,"props":15,"END":16,"PUBLIC":17,"OBJECT":18,"prop":19,"COMMA":20,"COLON":21,"var":22,"DOT":23,"$accept":0,"$end":1},
+terminals_: {2:"error",5:"EOF",10:"EXPORT",11:"VAR",12:"ARRAY",13:"STRING",14:"START",16:"END",17:"PUBLIC",18:"OBJECT",20:"COMMA",21:"COLON",23:"DOT"},
+productions_: [0,[3,2],[3,2],[4,1],[4,1],[6,1],[6,2],[9,3],[7,5],[7,6],[8,5],[8,6],[15,1],[15,3],[19,2],[19,4],[19,7],[19,7],[22,1],[22,3]],
 performAction: function anonymous(yytext, yyleng, yylineno, yy, yystate /* action[1] */, $$ /* vstack */, _$ /* lstack */) {
 /* this == yyval */
 
@@ -89,7 +89,7 @@ break;
 case 3: case 4:
  this.$ = $$[$0]; 
 break;
-case 5: case 10: case 16:
+case 5: case 12: case 18:
  this.$ = [$$[$0]] 
 break;
 case 6:
@@ -102,27 +102,33 @@ case 8:
  this.$ = { type: 'array', description: $$[$0-3], props: $$[$0-1] } 
 break;
 case 9:
+ this.$ = { public: true, type: 'array', description: $$[$0-3], props: $$[$0-1] } 
+break;
+case 10:
  this.$ = { type: 'object', description: $$[$0-3], props: $$[$0-1] } 
 break;
-case 11: case 17:
+case 11:
+ this.$ = { public: true, type: 'object', description: $$[$0-3], props: $$[$0-1] } 
+break;
+case 13: case 19:
  this.$ = [].concat($$[$0-2], $$[$0]) 
 break;
-case 12:
+case 14:
  this.$ = { key: $$[$0-1], description: $$[$0]}
 break;
-case 13:
+case 15:
  this.$ = { key: $$[$0-3], description: $$[$0-2], path: $$[$0] }
 break;
-case 14:
+case 16:
  this.$ = { key: $$[$0-6], description: $$[$0-5], props: $$[$0-1], type: 'object' }
 break;
-case 15:
+case 17:
  this.$ = { key: $$[$0-6], description: $$[$0-5], props: $$[$0-1], type: 'array' }
 break;
 }
 },
-table: [{3:1,4:2,6:3,7:4,8:5,9:6,10:$V0,12:$V1,17:$V2},{1:[3]},{5:[1,10]},{5:[1,11],9:12,10:$V0},o($V3,[2,3]),o($V3,[2,4]),o($V3,[2,5]),{13:[1,13]},{13:[1,14]},{11:[1,15]},{1:[2,1]},{1:[2,2]},o($V3,[2,6]),{14:[1,16]},{14:[1,17]},{4:18,7:4,8:5,12:$V1,17:$V2},{11:$V4,15:19,18:20},{11:$V4,15:22,18:20},o($V3,[2,7]),{16:[1,23],19:$V5},o($V6,[2,10]),{13:[1,25]},{16:[1,26],19:$V5},o($V3,[2,8]),{11:$V4,18:27},o($V6,[2,12],{20:[1,28]}),o($V3,[2,9]),o($V6,[2,11]),{11:[1,32],12:[1,31],17:[1,30],21:29},o($V6,[2,13],{22:[1,33]}),{14:[1,34]},{14:[1,35]},o($V7,[2,16]),{11:[1,36]},{11:$V4,15:37,18:20},{11:$V4,15:38,18:20},o($V7,[2,17]),{16:[1,39],19:$V5},{16:[1,40],19:$V5},o($V6,[2,14]),o($V6,[2,15])],
-defaultActions: {10:[2,1],11:[2,2]},
+table: [{3:1,4:2,6:3,7:4,8:5,9:6,10:$V0,12:$V1,17:$V2,18:$V3},{1:[3]},{5:[1,11]},{5:[1,12],9:13,10:$V0},o($V4,[2,3]),o($V4,[2,4]),o($V4,[2,5]),{13:[1,14]},{12:[1,15],18:[1,16]},{13:[1,17]},{11:[1,18]},{1:[2,1]},{1:[2,2]},o($V4,[2,6]),{14:[1,19]},{13:[1,20]},{13:[1,21]},{14:[1,22]},{4:23,7:4,8:5,12:$V1,17:$V2,18:$V3},{11:$V5,15:24,19:25},{14:[1,27]},{14:[1,28]},{11:$V5,15:29,19:25},o($V4,[2,7]),{16:[1,30],20:$V6},o($V7,[2,12]),{13:[1,32]},{11:$V5,15:33,19:25},{11:$V5,15:34,19:25},{16:[1,35],20:$V6},o($V4,[2,8]),{11:$V5,19:36},o($V7,[2,14],{21:[1,37]}),{16:[1,38],20:$V6},{16:[1,39],20:$V6},o($V4,[2,10]),o($V7,[2,13]),{11:[1,43],12:[1,42],18:[1,41],22:40},o($V4,[2,9]),o($V4,[2,11]),o($V7,[2,15],{23:[1,44]}),{14:[1,45]},{14:[1,46]},o($V8,[2,18]),{11:[1,47]},{11:$V5,15:48,19:25},{11:$V5,15:49,19:25},o($V8,[2,19]),{16:[1,50],20:$V6},{16:[1,51],20:$V6},o($V7,[2,16]),o($V7,[2,17])],
+defaultActions: {11:[2,1],12:[2,2]},
 parseError: function parseError(str, hash) {
     if (hash.recoverable) {
         this.trace(str);
@@ -597,32 +603,34 @@ var YYSTATE=YY_START;
 switch($avoiding_name_collisions) {
 case 0: return 12 
 break;
-case 1: return 17 
+case 1: return 18 
 break;
-case 2: return 10 
+case 2: return 17 
 break;
-case 3: return 14 
+case 3: return 10 
 break;
-case 4: return 19 
+case 4: return 14 
 break;
 case 5: return 20 
 break;
-case 6: return 16 
+case 6: return 21 
 break;
-case 7: return 11 
+case 7: return 16 
 break;
-case 8: return 22 
+case 8: return 11 
 break;
-case 9: yy_.yytext = yy_.yytext.substr(1, yy_.yyleng-2); return 13; 
+case 9: return 23 
 break;
-case 10: /*ignore whitespace*/ 
+case 10: yy_.yytext = yy_.yytext.substr(1, yy_.yyleng-2); return 13; 
 break;
-case 11: return 5; 
+case 11: /*ignore whitespace*/ 
+break;
+case 12: return 5; 
 break;
 }
 },
-rules: [/^(?:Array\b)/,/^(?:Object\b)/,/^(?:export\b)/,/^(?:\{)/,/^(?:,)/,/^(?::)/,/^(?:\})/,/^(?:[\$\w]+)/,/^(?:\.(?=[\$\w]))/,/^(?:\((\\\)|[^\)])*\))/,/^(?:\s+)/,/^(?:$)/],
-conditions: {"INITIAL":{"rules":[0,1,2,3,4,5,6,7,8,9,10,11],"inclusive":true}}
+rules: [/^(?:Array\b)/,/^(?:Object\b)/,/^(?:public\b)/,/^(?:export\b)/,/^(?:\{)/,/^(?:,)/,/^(?::)/,/^(?:\})/,/^(?:[\$\w]+)/,/^(?:\.(?=[\$\w]))/,/^(?:\((\\\)|[^\)])*\))/,/^(?:\s+)/,/^(?:$)/],
+conditions: {"INITIAL":{"rules":[0,1,2,3,4,5,6,7,8,9,10,11,12],"inclusive":true}}
 });
 return lexer;
 })();
