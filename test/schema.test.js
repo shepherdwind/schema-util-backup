@@ -6,19 +6,19 @@ describe('schema.test.js', function() {
   it('simple', function() {
     var json = schema(`
       Array(知名品牌店铺) {
-        href(店铺连接),
-        title(标题),
-        img(图片地址): Image,
-        amount(优惠金额)
+        href(店铺连接): url,
+        title(标题): string,
+        img(图片地址): image,
+        amount(优惠金额): number
       }
     `);
     json.type.should.eql('array');
     json.description.should.eql('知名品牌店铺');
     var props = {
-      href: { description: '店铺连接', type: 'string' },
+      href: { description: '店铺连接', type: 'url' },
       title: { description: '标题', type: 'string' },
       img: { description: '图片地址', type: 'image' },
-      amount: { description: '优惠金额', type: 'string' }
+      amount: { description: '优惠金额', type: 'number' }
     };
 
     json.properties.should.eql(props);

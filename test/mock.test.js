@@ -24,7 +24,7 @@ describe('mock.test.js', function() {
       title: '标题',
       img: '图片地址',
       amount: '优惠金额',
-      user: { name: '名字', age: '年龄' }
+      user: { name: '名字', age: 30 }
     });
   });
 
@@ -63,6 +63,18 @@ describe('mock.test.js', function() {
       array: { size: 4 }
     });
     data.length.should.equal(4);
+  });
+
+  it('mock other type', function() {
+    const s = schema(`
+      Object(foo) {
+        foo1(hello): boolean,
+        foo2(hello2): url,
+        foo3(hello3): number
+      }
+    `);
+    const data = mock(s);
+    data.should.containEql({ foo1: false, foo2: 'http://alipay.com', foo3: 30 });
   });
 
 });
